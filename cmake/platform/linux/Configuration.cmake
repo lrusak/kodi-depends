@@ -1,0 +1,4 @@
+set(CORE_SYSTEM_NAME linux)
+set(MESON_SYSTEM linux)
+
+list(APPEND WITH_TARGET_CFLAGS "-fPIC -DPIC")

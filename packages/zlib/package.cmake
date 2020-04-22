@@ -1,0 +1,20 @@
+set(PKG_NAME "zlib")
+set(PKG_VERSION "1.2.11")
+set(PKG_SHA256 "c3e5e9fdd5004dcb542feda5ee4f0ff0744628baf8ed2dd5d66f8ca1197cb1a1")
+set(PKG_ARCHIVE "${PKG_NAME}-${PKG_VERSION}.tar.gz")
+set(PKG_DEPENDS_HOST "toolchain")
+set(PKG_DEPENDS_TARGET "toolchain")
+set(PKG_TOOLCHAIN "custom")
+set(PKG_PATCHES "01-visibility.patch")
+
+set(PKG_CONFIGURE_COMMAND_HOST ./configure --prefix=${INSTALL_PREFIX_HOST})
+set(PKG_BUILD_COMMAND_HOST $(MAKE))
+set(PKG_INSTALL_COMMAND_HOST $(MAKE) install)
+
+set(PKG_CONFIGURE_COMMAND_TARGET ./configure --prefix=${INSTALL_PREFIX_TARGET} --static)
+set(PKG_BUILD_COMMAND_TARGET $(MAKE))
+set(PKG_INSTALL_COMMAND_TARGET $(MAKE) install)
+
+if(APPLE)
+  set(PKG_TOOLCHAIN "virtual")
+endif()

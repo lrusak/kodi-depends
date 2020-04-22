@@ -1,0 +1,13 @@
+set(PKG_NAME "expat")
+set(PKG_VERSION "2.2.7")
+set(PKG_SHA256 "cbc9102f4a31a8dafd42d642e9a3aa31e79a0aedaa1f6efd2795ebc83174ec18")
+set(PKG_ARCHIVE "${PKG_NAME}-${PKG_VERSION}.tar.bz2")
+set(PKG_DEPENDS_HOST "toolchain")
+set(PKG_DEPENDS_TARGET "toolchain")
+set(PKG_TOOLCHAIN "autotools")
+
+set(PKG_BUILD_CFLAGS_HOST "-fPIC -DPIC")
+
+set(PKG_CONFIGURE_OPTS_HOST "--disable-shared")
+set(PKG_CONFIGURE_OPTS_TARGET ${PKG_CONFIGURE_OPTS_HOST})
+

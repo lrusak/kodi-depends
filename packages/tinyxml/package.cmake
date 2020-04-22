@@ -1,0 +1,10 @@
+set(PKG_NAME "tinyxml")
+set(PKG_VERSION "2.6.2_2")
+set(PKG_SHA256 "8164c9ad48b9028667768a584d62f7760cfbfb90d0dd6214ad174403058da10c")
+set(PKG_ARCHIVE "${PKG_NAME}-${PKG_VERSION}.tar.gz")
+set(PKG_DEPENDS_TARGET "toolchain")
+set(PKG_TOOLCHAIN "autotools")
+set(PKG_AUTORECONF ON)
+
+set(PKG_CONFIGURE_OPTS_TARGET "--disable-shared")
+

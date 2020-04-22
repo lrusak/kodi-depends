@@ -1,0 +1,73 @@
+set(DASHES "===========================")
+
+message(NOTICE \n${DASHES}${DASHES}${DASHES})
+message(NOTICE "Build Options")
+message(STATUS "Install Prefix: ${WITH_PREFIX}")
+message(STATUS "Using Toolchain: ${WITH_TOOLCHAIN}")
+message(STATUS "Target Platform: ${CORE_PLATFORM_NAME_LC}")
+message(STATUS "Target CPU: ${WITH_CPU}")
+message(STATUS "Host Triplet: ${WITH_HOST}")
+message(STATUS "Target Triplet: ${WITH_TARGET}")
+message(STATUS "CMake build type: ${CMAKE_BUILD_TYPE}")
+message(STATUS "Enable CCache: ${ENABLE_CCACHE}")
+message(STATUS "Enable GPLv3: ${ENABLE_GPLV3}")
+message(STATUS "Enable Console Logging ${ENABLE_CONSOLE_LOGGING}")
+message(STATUS "Archives Location: ${WITH_ARCHIVES}")
+
+message(STATUS "Target cflags: ${WITH_TARGET_CFLAGS}")
+message(STATUS "Target cxxflags: ${WITH_TARGET_CXXFLAGS}")
+message(STATUS "Target ldflags: ${WITH_TARGET_LDFLAGS}")
+
+message(STATUS "FFmpeg Options: ${WITH_FFMPEG_OPTIONS}")
+
+if(CORE_PLATFORM_NAME_LC MATCHES "android|tvos|ios|osx")
+  message(STATUS "SDK Path: ${WITH_SDK_PATH}")
+  message(STATUS "SDK Platform Version: ${WITH_SDK_PLATFORM_VERSION}")
+endif()
+
+if(CORE_PLATFORM_NAME_LC STREQUAL "android")
+  message(STATUS "NDK Path: ${WITH_NDK_PATH}")
+  message(STATUS "NDK API Level: ${WITH_NDK_API}")
+endif()
+
+if(CORE_PLATFORM_NAME_LC IN_LIST VALID_LINUX_PLATFORMS_LIST)
+  message(STATUS "Render System: ${WITH_RENDERSYSTEM}")
+endif()
+
+if(CORE_PLATFORM_NAME_LC STREQUAL "rbpi")
+  message(STATUS "Firmware Location: ${WITH_FIRMWARE}")
+endif()
+message(NOTICE ${DASHES}${DASHES}${DASHES})
+
+message(NOTICE \n${DASHES}${DASHES}${DASHES})
+message(NOTICE "Build Configuration")
+message(STATUS "App Name: ${APP_NAME}")
+message(STATUS "Base URL: ${BASE_URL}")
+message(STATUS "Target Install Prefix: ${INSTALL_PREFIX_TARGET}")
+message(STATUS "Host Install Prefix: ${INSTALL_PREFIX_HOST}")
+message(STATUS "Target Build Directory: ${BUILD_DIR_TARGET}")
+message(STATUS "Host Build Directory: ${BUILD_DIR_HOST}")
+message(STATUS "Meson CPU: ${MESON_CPU}")
+message(STATUS "Meson System: ${MESON_SYSTEM}")
+message(STATUS "Cmake System: ${CMAKE_SYSTEM_NAME}")
+message(STATUS "Core System: ${CORE_SYSTEM_NAME}")
+message(NOTICE ${DASHES}${DASHES}${DASHES})
+
+message(NOTICE \n${DASHES}${DASHES}${DASHES})
+message(NOTICE "Platform Flags")
+message(STATUS "PLATFORM_INCLUDES: ${PLATFORM_INCLUDES}")
+message(STATUS "PLATFORM_CFLAGS: ${PLATFORM_CFLAGS}")
+message(STATUS "PLATFORM_CXXFLAGS: ${PLATFORM_CXXFLAGS}")
+message(STATUS "PLATFORM_LDFLAGS: ${PLATFORM_LDFLAGS}")
+
+message(STATUS "CMAKE_C_FLAGS_RELEASE: ${CMAKE_C_FLAGS_RELEASE}")
+message(STATUS "CMAKE_CXX_FLAGS_RELEASE: ${CMAKE_CXX_FLAGS_RELEASE}")
+
+message(STATUS "CMAKE_C_FLAGS_DEBUG: ${CMAKE_C_FLAGS_DEBUG}")
+message(STATUS "CMAKE_CXX_FLAGS_DEBUG: ${CMAKE_CXX_FLAGS_DEBUG}")
+
+message(STATUS "CMAKE_C_FLAGS: ${CMAKE_C_FLAGS}")
+message(STATUS "CMAKE_CXX_FLAGS: ${CMAKE_CXX_FLAGS}")
+
+message(STATUS "CMAKE_EXE_LINKER_FLAGS: ${CMAKE_EXE_LINKER_FLAGS}")
+message(NOTICE ${DASHES}${DASHES}${DASHES}\n)

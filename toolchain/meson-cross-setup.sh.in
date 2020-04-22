@@ -1,0 +1,27 @@
+#!/bin/sh
+
+cat > @CMAKE_BINARY_DIR@/cross-file.meson << EOF
+[binaries]
+$(@INSTALL_PREFIX_HOST@/bin/python3 -c "print('c = \'{}\''.format('@TARGET_CC@'.split()[-1]))")
+$(@INSTALL_PREFIX_HOST@/bin/python3 -c "print('cpp = \'{}\''.format('@TARGET_CXX@'.split()[-1]))")
+ar = '@TARGET_AR@'
+strip = '@TARGET_STRIP@'
+pkgconfig = '@INSTALL_PREFIX_HOST@/bin/pkg-config'
+
+[host_machine]
+system = '@MESON_SYSTEM@'
+cpu_family = '@MESON_CPU@'
+cpu = '@WITH_CPU@'
+endian = 'little'
+
+[properties]
+$(@INSTALL_PREFIX_HOST@/bin/python3 -c "print('c_args = {}'.format([x for x in '@CMAKE_C_FLAGS@'.split()]))")
+$(@INSTALL_PREFIX_HOST@/bin/python3 -c "print('c_link_args = {}'.format([x for x in '@CMAKE_EXE_LINKER_FLAGS@'.split()]))")
+$(@INSTALL_PREFIX_HOST@/bin/python3 -c "print('cpp_args = {}'.format([x for x in '@CMAKE_CXX_FLAGS@'.split()]))")
+$(@INSTALL_PREFIX_HOST@/bin/python3 -c "print('cpp_link_args = {}'.format([x for x in '@CMAKE_EXE_LINKER_FLAGS@'.split()]))")
+
+[paths]
+prefix = '@INSTALL_PREFIX_TARGET@'
+libdir = 'lib'
+bindir = 'bin'
+EOF

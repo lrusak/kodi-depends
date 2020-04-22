@@ -1,0 +1,15 @@
+diff -Naur a/Makefile.in b/Makefile.in
+--- a/Makefile.in	2016-05-23 01:00:36.000000000 -0700
++++ b/Makefile.in	2020-04-28 12:47:42.611625029 -0700
+@@ -95,9 +95,9 @@
+ 	testSAX$(EXEEXT) testHTML$(EXEEXT) testXPath$(EXEEXT) \
+ 	testURI$(EXEEXT) testThreads$(EXEEXT) testC14N$(EXEEXT) \
+ 	testAutomata$(EXEEXT) testRegexp$(EXEEXT) testReader$(EXEEXT) \
+-	testapi$(EXEEXT) testModule$(EXEEXT) runtest$(EXEEXT) \
++	testapi$(EXEEXT) testModule$(EXEEXT) \
+ 	runsuite$(EXEEXT) testchar$(EXEEXT) testdict$(EXEEXT) \
+-	runxmlconf$(EXEEXT) testrecurse$(EXEEXT) testlimits$(EXEEXT)
++	runxmlconf$(EXEEXT) testlimits$(EXEEXT)
+ bin_PROGRAMS = xmllint$(EXEEXT) xmlcatalog$(EXEEXT)
+ subdir = .
+ ACLOCAL_M4 = $(top_srcdir)/aclocal.m4

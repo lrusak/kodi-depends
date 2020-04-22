@@ -1,0 +1,7 @@
+set(PKG_NAME "crossguid")
+set(PKG_VERSION "8f399e8bd4")
+set(PKG_SHA256 "3d77d09a5df0de510aeeb940df4cb534787ddff3bb1828779753f5dfa1229d10")
+set(PKG_ARCHIVE "${PKG_NAME}-${PKG_VERSION}.tar.gz")
+set(PKG_DEPENDS_TARGET "libuuid")
+set(PKG_TOOLCHAIN "cmake")
+set(PKG_PATCHES "01-add-cmake.patch")

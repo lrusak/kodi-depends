@@ -1,0 +1,41 @@
+--- a/Configurations/10-main.conf
++++ b/Configurations/10-main.conf
+@@ -1626,7 +1626,7 @@
+ #
+     "iphoneos-cross" => {
+         inherit_from     => [ "darwin-common" ],
+-        cflags           => add("-isysroot \$(CROSS_TOP)/SDKs/\$(CROSS_SDK) -fno-common"),
++        cflags           => add("-isysroot \$(WITH_SDK_PATH) -fno-common"),
+         sys_id           => "iOS",
+     },
+     "ios-cross" => {
+@@ -1634,17 +1634,27 @@
+         # It should be possible to go below iOS 6 and even add -arch armv6,
+         # thus targeting iPhone pre-3GS, but it's assumed to be irrelevant
+         # at this point.
+-        cflags           => add("-arch armv7 -mios-version-min=6.0.0 -isysroot \$(CROSS_TOP)/SDKs/\$(CROSS_SDK) -fno-common"),
++        cflags           => add("-arch armv7 -mios-version-min=6.0.0 -isysroot \$(WITH_SDK_PATH) -fno-common"),
+         sys_id           => "iOS",
+         perlasm_scheme   => "ios32",
+     },
+     "ios64-cross" => {
+         inherit_from     => [ "darwin-common", asm("aarch64_asm") ],
+-        cflags           => add("-arch arm64 -mios-version-min=7.0.0 -isysroot \$(CROSS_TOP)/SDKs/\$(CROSS_SDK) -fno-common"),
++        cflags           => add("-arch arm64 -isysroot \$(WITH_SDK_PATH) -fno-common -fembed-bitcode",
++                                sub { defined($ENV{'IOS_MIN_SDK_VERSION'}) ? '-mios-version-min=$(IOS_MIN_SDK_VERSION)' : '-mios-version-min=11.0'; }),
+         sys_id           => "iOS",
+         bn_ops           => "SIXTY_FOUR_BIT_LONG RC4_CHAR",
+         perlasm_scheme   => "ios64",
+     },
++    ## Apple tvOS (arm64)
++    # Based on 10-main.conf: ios64-cross
++    "tvos64-cross" => {
++        inherit_from     => [ "darwin-common", asm("aarch64_asm") ],
++        cflags           => add("-arch arm64 -isysroot \$(WITH_SDK_PATH) -fno-common -fembed-bitcode",
++                                sub { defined($ENV{'TVOS_MIN_SDK_VERSION'}) ? '-mtvos-version-min=$(TVOS_MIN_SDK_VERSION)' : '-mtvos-version-min=11.0'; }),
++        defines          => [ "HAVE_FORK=0" ],
++        sys_id           => "tvOS",
++    },
+ 
+ ##### GNU Hurd
+     "hurd-x86" => {

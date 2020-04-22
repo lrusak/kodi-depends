@@ -1,0 +1,26 @@
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -417,12 +417,9 @@
+ SUBDIRS = \
+ 	libxslt \
+ 	libexslt \
+-	xsltproc \
+-	doc \
+-	$(PYTHON_SUBDIR) \
+-	tests
++	$(PYTHON_SUBDIR)
+ 
+-DIST_SUBDIRS = libxslt libexslt xsltproc python doc tests
++DIST_SUBDIRS = libxslt libexslt python
+ confexecdir = $(libdir)
+ confexec_DATA = xsltConf.sh
+ bin_SCRIPTS = xslt-config
+@@ -1053,7 +1050,7 @@
+ 	       < $(srcdir)/xsltConf.sh.in > xsltConf.tmp \
+ 	&& mv xsltConf.tmp xsltConf.sh
+ 
+-check-local: tests
++check-local:
+ 
+ dummy:
+ 

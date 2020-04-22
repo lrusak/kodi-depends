@@ -1,0 +1,10 @@
+set(PKG_NAME "libandroidjni")
+set(PKG_VERSION "fc24c9cc507a244a587fa590f6882a588b9fc927")
+set(PKG_SHA256 "4663635c5e5ba9afe21f128fe837c95a3484216f0602abdb28bc50f8903211ce")
+set(PKG_ARCHIVE "${PKG_NAME}-${PKG_VERSION}.tar.gz")
+set(PKG_URL "https://github.com/xbmc/${PKG_NAME}/archive/${PKG_VERSION}.tar.gz")
+set(PKG_DEPENDS_TARGET "toolchain")
+set(PKG_TOOLCHAIN "cmake")
+
+set(PKG_CMAKE_OPTS_TARGET -DCMAKE_LIBRARY_PATH=${WITH_TOOLCHAIN}/lib/${WITH_TARGET})
+

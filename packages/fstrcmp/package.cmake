@@ -1,0 +1,14 @@
+set(PKG_NAME "fstrcmp")
+set(PKG_VERSION "0.7.D001")
+set(PKG_SHA256 "e4018e850f80700acee8da296e56e15b1eef711ab15157e542e7d7e1237c3476")
+set(PKG_ARCHIVE "${PKG_NAME}-${PKG_VERSION}.tar.gz")
+set(PKG_DEPENDS_TARGET "toolchain")
+set(PKG_TOOLCHAIN "autotools")
+set(PKG_AUTORECONF ON)
+
+set(PKG_MAKE_OPTS_HOST lib/libfstrcmp.la)
+set(PKG_MAKE_INSTALL_OPTS_HOST install-include install-libdir)
+
+set(PKG_MAKE_OPTS_TARGET ${PKG_MAKE_OPTS_HOST})
+set(PKG_MAKE_INSTALL_OPTS_TARGET ${PKG_MAKE_INSTALL_OPTS_HOST})
+

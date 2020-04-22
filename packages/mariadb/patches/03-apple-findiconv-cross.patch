@@ -1,0 +1,17 @@
+--- a/cmake/FindIconv.cmake
++++ b/cmake/FindIconv.cmake
+@@ -24,10 +24,11 @@
+   # There is some libiconv.so in  /usr/local that must
+   # be avoided, iconv routines are in libc  
+ ELSEIF(APPLE)
+-  find_library(ICONV_LIBRARIES NAMES iconv libiconv PATHS
+-               /usr/lib/
+-               NO_CMAKE_SYSTEM_PATH)
++  list(APPEND CMAKE_FIND_ROOT_PATH ${WITH_SDK_PATH} ${WITH_SDK_PATH}/usr)
++  find_library(ICONV_LIBRARIES NAMES iconv libiconv)
++  IF(ICONV_LIBRARIES)
+     SET(ICONV_EXTERNAL TRUE)
++  ENDIF()
+ ELSE()
+   find_library(ICONV_LIBRARIES NAMES iconv libiconv libiconv-2)
+   IF(ICONV_LIBRARIES)
