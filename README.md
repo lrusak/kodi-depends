@@ -88,11 +88,33 @@ make -j<n>
 ```
 
 
+
+appletvos:
+```
+mkdir -p build-appletvos && cd build-appletvos
+
+cmake -DCORE_PLATFORM_NAME=tvos 
+      -DWITH_KODI_SOURCE=/Users/username/kodi
+      -DENABLE_GPLV3=ON
+      -DENABLE_CONSOLE_LOGGING=OFF
+      ..
+
+cmake --build . -j <n>
+```
+
+Build command can optionally be via cmake or make. Examples usage of both can be seen above
+
 # Building Kodi
 
 ```
 cmake -DCMAKE_TOOLCHAIN_FILE=../kodi-depends/build/Toolchain.cmake
       ..
+```
+
+Alternatively
+
+```
+make -C tools/depends/target/cmakebuildsys CMAKE_EXTRA_ARGUMENTS="-DCMAKE_TOOLCHAIN_FILE=/Users/username/kodi-depends/build/Toolchain.cmake"
 ```
 
 # Configuration
