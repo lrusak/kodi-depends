@@ -107,3 +107,10 @@ if(CORE_SYSTEM_NAME STREQUAL android)
                    libandroidjni-target
                    libzip-target)
 endif()
+
+file(GLOB files "binary-addons/*/package.cmake")
+
+foreach(file ${files})
+  include(${file})
+  add_depends_for_targets("HOST;TARGET")
+endforeach()
